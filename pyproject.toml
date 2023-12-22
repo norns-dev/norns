@@ -26,3 +26,33 @@ pyupgrade = "^3.15.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py311', 'py312']
+
+[tool.isort]
+profile = 'black'
+
+[tool.pylint.main]
+disable = [
+    "R0801", # similar lines in 2 files
+]
+
+[tool.pylint.format]
+max-line-length = "88"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "*.py"
+python_functions = "test_*"
+
+log_cli = true
+log_cli_level = "WARNING"
+log_cli_format = "%(asctime)s - %(levelname)s - %(name)s:%(lineno)d\n\t%(message)s"
+
+log_file_level = "DEBUG"
+log_file_format = "%(asctime)s - %(levelname)s - %(name)s:%(lineno)d\n\t%(message)s"
+
+[tool.coverage.report]
+omit = ["tests/*.py"]
+show_missing = true
