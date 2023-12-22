@@ -42,7 +42,7 @@ repos:
     hooks:
       - id: poetry-check # checks poetry config is not broken
       - id: poetry-lock # ensures lock file is up-to-date
-        args: [ "--no-update" ] # Do not update locked versions, only refresh lock file.
+        args: [ "--no-update", "--no-cache" ] # Do not update locked versions, only refresh lock file.
       - id: poetry-export
         args: [ "--without-hashes", "-o", "requirements.txt", "-f", "requirements.txt"]
   - repo: https://github.com/igorshubovych/markdownlint-cli
