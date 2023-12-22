@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^4.2"
+django = "^5.0"
 
 [tool.poetry.group.dev]
 optional = true
