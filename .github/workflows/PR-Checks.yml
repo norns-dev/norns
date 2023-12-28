@@ -1,4 +1,4 @@
-name: "pre-commit checks"
+name: "PR Checks"
 on:
   pull_request:
     branches:
@@ -7,8 +7,8 @@ on:
       - "release/**"
 
 jobs:
-  Style:
-    name: "pre-commit checks"
+  style:
+    name: "pre-commit Checks"
     runs-on: ubuntu-latest
     env:
       PY_VERSION: "3.11"
@@ -28,3 +28,26 @@ jobs:
         run: poetry install --no-interaction --with dev
       - name: Run pre-commit
         run: poetry run pre-commit run --all-files --show-diff-on-failure
+
+  tests:
+    name: "Unit Testing"
+    needs: [ style ]
+    runs-on: ubuntu-latest
+    env:
+      PY_VERSION: "3.11"
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Poetry
+        run: |
+          pipx install poetry==1.7.1
+          poetry config virtualenvs.in-project true
+          poetry config installer.parallel true
+      - name: Set up Python 3.11 on ubuntu-latest
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "poetry"
+      - name: Install dependencies
+        run: poetry install --no-interaction
+      - name: Run tests
+        run: poetry run python3 manage.py test
