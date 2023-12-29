@@ -45,7 +45,14 @@ repos:
       - id: poetry-lock # ensures lock file is up-to-date
         args: [ "--no-update", "--no-cache" ] # Do not update locked versions, only refresh lock file.
       - id: poetry-export
-        args: [ "--without-hashes", "-o", "requirements.txt", "-f", "requirements.txt"]
+        name: poetry-export-base
+        args: [ "--without-hashes", "-o", "requirements.txt", "-f", "requirements.txt" ]
+      - id: poetry-export
+        name: poetry-export-dev
+        args: [ "--without-hashes", "-o", "requirements-dev.txt", "-f", "requirements.txt", "--only", "dev"]
+      - id: poetry-export
+        name: poetry-export-server
+        args: [ "--without-hashes", "-o", "requirements-server.txt", "-f", "requirements.txt", "--only", "server" ]
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.38.0
     hooks:

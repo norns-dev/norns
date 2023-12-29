@@ -23,6 +23,13 @@ pytest = "^7.4.3"
 pytest-cov = "^4.1.0"
 pyupgrade = "^3.15.0"
 
+[tool.poetry.group.server]
+optional = true
+
+[tool.poetry.group.server.dependencies]
+gunicorn = "^21.2.0"
+psycopg2-binary = "^2.9.9"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
