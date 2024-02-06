@@ -2,7 +2,6 @@
 Tests for pages app
 """
 
-# pylint: disable=C0115,C0116
 from django.test import SimpleTestCase
 from django.urls import reverse
 
