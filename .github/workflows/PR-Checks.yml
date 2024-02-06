@@ -13,7 +13,7 @@ jobs:
     env:
       PY_VERSION: "3.11"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Poetry
         run: |
           pipx install poetry==1.7.1
@@ -38,7 +38,7 @@ jobs:
       SECRET_KEY: "z1sr@98lg&8@jz)i2nhj0)ic7em-!_g*3o^b!!pit%q$=d+t5o"
       DJANGO_DEBUG: "True"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Poetry
         run: |
           pipx install poetry==1.7.1
