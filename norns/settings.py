@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # Local
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
+    "parties.apps.PartiesConfig",
 ]
 
 MIDDLEWARE = [
