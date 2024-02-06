@@ -1,6 +1,7 @@
 """
 URLs for pages app
 """
+
 from django.urls import path
 
 from .views import HomePageView
