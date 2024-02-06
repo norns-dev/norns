@@ -77,12 +77,13 @@ repos:
         entry: poetry run flake8
         language: system
         types: [ python ]
+        exclude: ^(.*/tests.py|.*/migrations/.*.py)$
       - id: pylint
         name: pylint
         entry: poetry run pylint -rn -sn
         language: system
         types: [ python ]
-        exclude: ^.*/tests.py$
+        exclude: ^(.*/tests.py|.*/migrations/.*.py)$
       - id: poetry-sync
         name: poetry-sync
         entry: poetry install --sync --with dev
