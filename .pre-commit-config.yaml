@@ -83,9 +83,9 @@ repos:
         language: system
         types: [ python ]
         exclude: ^.*/tests.py$
-      - id: poetry-sync
-        name: poetry-sync
-        entry: poetry install --sync --with dev
+      - id: new-branch-setup
+        name: new-branch-setup
+        entry: poetry install --sync --with dev && rm db.sqlite3 && python migrate.py migrate
         language: system
         always_run: true
         stages:
