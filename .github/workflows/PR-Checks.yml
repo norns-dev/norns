@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PY_VERSION: "3.11"
+      SECRET_KEY: "z1sr@98lg&8@jz)i2nhj0)ic7em-!_g*3o^b!!pit%q$=d+t5o"
     steps:
       - uses: actions/checkout@v3
       - name: Install Poetry
