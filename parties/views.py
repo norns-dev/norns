@@ -1,7 +1,7 @@
 """Views for parties app"""
 
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
 from .models import Party
 
@@ -25,3 +25,15 @@ class PartyDetailView(View):
         """Returns details of party for POST methods"""
         view = MemberGet.as_view()
         return view(request, *args, **kwargs)
+
+
+class PartyListView(ListView):
+    """List of parties"""
+
+    model = Party
+    template_name = "party_list.html"
+    ordering = ["name"]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(deleted_at=None)
