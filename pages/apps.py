@@ -1,6 +1,7 @@
 """
 Config for pages app
 """
+
 from django.apps import AppConfig
 
 
