@@ -10,5 +10,9 @@
 {% for member in party.partymember_set.all %}
 <p>{{ member.character_name }} - {{ member.user.first_name }} {{ member.user.last_name }} ({{ member.user.email }})</p>
 {% endfor %}
+    <div>
+      <p><a class="btn btn-primary btn-lg" href="{% url 'party_edit' party.pk%}" role="button">Edit</a>
+          <a class="btn btn-danger btn-lg" href="{% url 'party_delete' party.pk%}" role="button">Delete</a></p>
+    </div>
 <hr>
 {% endblock content %}
