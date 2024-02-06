@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="party-detail">
+  <h2>{{ object.name }}</h2>
+  <p>{{ object.description }}</p>
+</div>
+<hr>
+<h4>Members ({{ object.partymember_set.count }})</h4>
+{% for member in party.partymember_set.all %}
+<p>{{ member.character_name }} - {{ member.user.first_name }} {{ member.user.last_name }} ({{ member.user.email }})</p>
+{% endfor %}
+<hr>
+{% endblock content %}
