@@ -47,7 +47,7 @@ repos:
       - id: poetry-export
         args: [ "--without-hashes", "-o", "requirements.txt", "-f", "requirements.txt"]
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.38.0
+    rev: v0.39.0
     hooks:
       - id: markdownlint-fix
   - repo: local
