@@ -3,6 +3,7 @@
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
+from django.utils.timezone import now
 
 
 class Party(models.Model):
@@ -21,6 +22,10 @@ class Party(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    def delete(self, *args, **kwargs):
+        self.deleted_at = now()
+        self.save(*args, **kwargs)
 
     def get_absolute_url(self):
         """Returns absolute URL for parties detail view"""
