@@ -22,5 +22,4 @@ class HomePageTest(SimpleTestCase):
 
     def test_template_content(self):
         response = self.client.get(reverse("home"))
-        self.assertContains(response, "<h1>norns</h1>")
-        self.assertContains(response, "App launched successfully!")
+        self.assertContains(response, "<p>You are not logged in</p>")

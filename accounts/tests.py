@@ -49,6 +49,7 @@ class SignupPageTests(TestCase):
                 "email": "testuser@email.com",
                 "password1": "testpass123",  # nosec
                 "password2": "testpass123",  # nosec
+                "timezone": "Europe/Berlin",
             },
         )
         self.assertEqual(response.status_code, 302)
