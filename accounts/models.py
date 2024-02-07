@@ -14,3 +14,6 @@ class CustomUser(AbstractUser):
     timezone = models.CharField(max_length=32, choices=TIMEZONES, default="UTC")
 
     email = models.EmailField(blank=False, max_length=254, verbose_name="email address")
+
+    def __str__(self):
+        return str(self.username)
