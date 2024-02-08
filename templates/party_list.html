@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-{% block title %}
-    Your Parties
-{% endblock title %}
+
 {% block content %}
-    {% for party in party_list %}
-        <div class="card">
-            <div class="card-header">
-                <span class="fw-bold">
-                    <a href="{{ party.get_absolute_url }}">{{ party.name }}</a>
-                </span>
-                <span class="text-muted">with {{ party.dm }}</span>
-            </div>
-            <div class="card-body">{{ party.description }}</div>
-        </div>
-        <br />
-    {% endfor %}
+{% for party in party_list %}
+<div class="card">
+  <div class="card-header">
+    <span class="fw-bold">
+      <a href="{{ party.get_absolute_url }}">{{ party.name }}</a>
+    </span> &middot;
+    <span class="text-muted">with {{ party.dm }}</span>
+  </div>
+  <div class="card-body">
+    {{ party.description }}
+  </div>
+</div>
+<br />
+{% endfor %}
 {% endblock content %}

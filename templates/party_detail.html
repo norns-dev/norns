@@ -7,8 +7,9 @@
     <hr>
     <h4>Members ({{ object.partymember_set.count }})</h4>
     {% for member in party.partymember_set.all %}
-        <p>{{ member.character_name }} - {{ member.user.first_name }} {{ member.user.last_name }} ({{ member.user.email }})</p>
+        <p>{{ member.character_name }} - ({{ member.user.username }})</p>
     {% endfor %}
+    {% if party.dm == request.user %}
     <div>
         <p>
             <a class="btn btn-primary btn-lg"
@@ -19,5 +20,6 @@
                role="button">Delete</a>
         </p>
     </div>
+    {% endif %}
     <hr>
 {% endblock content %}
