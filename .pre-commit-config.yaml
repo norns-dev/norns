@@ -50,6 +50,11 @@ repos:
     rev: v0.39.0
     hooks:
       - id: markdownlint-fix
+  - repo: https://github.com/djlint/djLint
+    rev: v1.34.1
+    hooks:
+      - id: djlint-reformat-django
+      - id: djlint-django
   - repo: local
     hooks:
       - id: bandit
