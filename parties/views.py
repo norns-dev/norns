@@ -20,10 +20,6 @@ class MemberGet(LoginRequiredMixin, DetailView):
     model = Party
     template_name = "party_detail.html"
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(deleted_at=None)
-
 
 class PartyDetailView(LoginRequiredMixin, View):
     """View for party details"""
