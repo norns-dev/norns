@@ -18,7 +18,7 @@ class MemberGet(LoginRequiredMixin, DetailView):
     """Returns member for party"""
 
     model = Party
-    template_name = "party_detail.html"
+    template_name = "parties/party_detail.html"
 
 
 class PartyDetailView(LoginRequiredMixin, View):
@@ -39,7 +39,7 @@ class PartyListViewJoined(LoginRequiredMixin, ListView):
     """List of parties the user is a member in"""
 
     model = Party
-    template_name = "party_list_joined.html"
+    template_name = "parties/party_list_joined.html"
     ordering = ["name"]
 
     def get_queryset(self):
@@ -51,7 +51,7 @@ class PartyListViewOwned(LoginRequiredMixin, ListView):
     """List of parties the user is a member in"""
 
     model = Party
-    template_name = "party_list_owned.html"
+    template_name = "parties/party_list_owned.html"
     ordering = ["name"]
 
     def get_queryset(self):
@@ -64,7 +64,7 @@ class PartyUpdateView(LoginRequiredMixin, UpdateView):
 
     model = Party
     fields = ("description",)
-    template_name = "party_edit.html"
+    template_name = "parties/party_edit.html"
 
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(dm=self.request.user)
@@ -74,7 +74,7 @@ class PartyDeleteView(LoginRequiredMixin, DeleteView):
     """Delete parties view"""
 
     model = Party
-    template_name = "party_delete.html"
+    template_name = "parties/party_delete.html"
     success_url = reverse_lazy("party_list")
 
     def get_queryset(self, *args, **kwargs):
@@ -85,7 +85,7 @@ class PartyCreateView(LoginRequiredMixin, CreateView):
     """Create new party"""
 
     model = Party
-    template_name = "party_new.html"
+    template_name = "parties/party_new.html"
     fields = (
         "name",
         "description",
