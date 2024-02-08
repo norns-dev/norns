@@ -1,5 +1,6 @@
 """Views for parties app"""
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import (
@@ -13,14 +14,14 @@ from django.views.generic import (
 from .models import Party
 
 
-class MemberGet(DetailView):
+class MemberGet(LoginRequiredMixin, DetailView):
     """Returns member for party"""
 
     model = Party
     template_name = "party_detail.html"
 
 
-class PartyDetailView(View):
+class PartyDetailView(LoginRequiredMixin, View):
     """View for party details"""
 
     def get(self, request, *args, **kwargs):
@@ -34,35 +35,53 @@ class PartyDetailView(View):
         return view(request, *args, **kwargs)
 
 
-class PartyListView(ListView):
-    """List of parties"""
+class PartyListViewJoined(LoginRequiredMixin, ListView):
+    """List of parties the user is a member in"""
 
     model = Party
-    template_name = "party_list.html"
+    template_name = "party_list_joined.html"
     ordering = ["name"]
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(deleted_at=None)
+        return queryset.filter(deleted_at=None, partymember__user=self.request.user)
 
 
-class PartyUpdateView(UpdateView):
+class PartyListViewOwned(LoginRequiredMixin, ListView):
+    """List of parties the user is a member in"""
+
+    model = Party
+    template_name = "party_list_owned.html"
+    ordering = ["name"]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(deleted_at=None, dm=self.request.user)
+
+
+class PartyUpdateView(LoginRequiredMixin, UpdateView):
     """Update parties view"""
 
     model = Party
     fields = ("description",)
     template_name = "party_edit.html"
 
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(dm=self.request.user)
 
-class PartyDeleteView(DeleteView):
+
+class PartyDeleteView(LoginRequiredMixin, DeleteView):
     """Delete parties view"""
 
     model = Party
     template_name = "party_delete.html"
     success_url = reverse_lazy("party_list")
 
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(dm=self.request.user)
 
-class PartyCreateView(CreateView):
+
+class PartyCreateView(LoginRequiredMixin, CreateView):
     """Create new party"""
 
     model = Party
