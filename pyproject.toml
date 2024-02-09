@@ -29,6 +29,13 @@ pytest = "^8.0.0"
 pytest-cov = "^4.1.0"
 pyupgrade = "^3.15.0"
 
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^7.2.6"
+furo = "^2024.1.29"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
