@@ -88,7 +88,7 @@ repos:
         entry: poetry run pylint -rn -sn
         language: system
         types: [ python ]
-        exclude: ^(.*/tests.py|.*/migrations/.*.py)$
+        exclude: ^(.*/tests.py|.*/migrations/.*.py|docs/.*)$
       - id: poetry-sync
         name: poetry-sync
         entry: poetry install --sync --with dev
