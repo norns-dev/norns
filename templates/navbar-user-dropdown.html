@@ -1,0 +1,26 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="userDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="false">{{ user.username }}</a>
+    <ul class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="userDropdown">
+        <li>
+            <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        </li>
+        {% if user.is_superuser %}
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Portal</a>
+            </li>
+        {% endif %}
+    </ul>
+</li>

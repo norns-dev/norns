@@ -1,0 +1,17 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="partyDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="false">Parties</a>
+    <ul class="dropdown-menu" aria-labelledby="partyDropdown">
+        <li>
+            <a class="dropdown-item" href="{% url 'party_list_owned' %}">Owned</a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{% url 'party_list_joined' %}">Joined</a>
+        </li>
+    </ul>
+</li>
