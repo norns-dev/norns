@@ -93,7 +93,7 @@ class PartyMember(SoftDeleteModel):
 
     party = models.ForeignKey(Party, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    character_name = models.CharField(max_length=100)
+    character_name = models.CharField(max_length=100, default="name")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
