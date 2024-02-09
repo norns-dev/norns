@@ -1,24 +1,56 @@
 """Views for parties app"""
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
+    FormView,
     ListView,
     UpdateView,
 )
+from django.views.generic.detail import SingleObjectMixin
 
+from .forms import PartyMemberForm
 from .models import Party
 
 
-class MemberGet(LoginRequiredMixin, DetailView):
+class MemberGet(DetailView):
     """Returns member for party"""
 
     model = Party
     template_name = "parties/party_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = PartyMemberForm()
+        return context
+
+
+class AddPartyMember(SingleObjectMixin, FormView):
+    """View to add a party member at the bottom of the party detail page"""
+
+    model = Party
+    form_class = PartyMemberForm
+    template_name = "parties/party_detail.html"
+
+    def post(self, request, *args, **kwargs):
+        self.object = (  # pylint: disable=attribute-defined-outside-init
+            self.get_object()
+        )
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        party_member = form.save(commit=False)
+        party_member.party = self.object
+        party_member.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        article = self.object
+        return reverse("party_detail", kwargs={"pk": article.pk})
 
 
 class PartyDetailView(LoginRequiredMixin, View):
@@ -31,7 +63,7 @@ class PartyDetailView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         """Returns details of party for POST methods"""
-        view = MemberGet.as_view()
+        view = AddPartyMember.as_view()
         return view(request, *args, **kwargs)
 
 

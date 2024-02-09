@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
     <div class="party-detail">
         <h2>{{ object.name }}</h2>
@@ -10,6 +11,13 @@
         <p>{{ member.character_name }} - ({{ member.user.username }})</p>
     {% endfor %}
     {% if party.dm == request.user %}
+        <h4>Add a party member</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success ml-2" type="submit">Save</button>
+        </form>
+        <hr>
         <div>
             <p>
                 <a class="btn btn-primary btn-lg"
