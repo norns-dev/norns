@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "bootstrap5",
+    "martor",
     # Local
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",

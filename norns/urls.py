@@ -24,4 +24,5 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("parties/", include("parties.urls")),
     path("", include("pages.urls")),
+    path("martor/", include("martor.urls")),
 ]
