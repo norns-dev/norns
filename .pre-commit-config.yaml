@@ -89,6 +89,12 @@ repos:
         language: system
         types: [ python ]
         exclude: ^(.*/tests.py|.*/migrations/.*.py|docs/.*)$
+      - id: mypy
+        name: mypy
+        entry: poetry run mypy --strict
+        language: system
+        types: [ python ]
+        exclude: ^(.*/tests.py|.*/migrations/.*.py|docs/.*)$
       - id: poetry-sync
         name: poetry-sync
         entry: poetry install --sync --with dev

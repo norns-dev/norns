@@ -28,6 +28,8 @@ pylint = "^3.0.3"
 pytest = "^8.0.0"
 pytest-cov = "^4.1.0"
 pyupgrade = "^3.15.0"
+mypy = "^1.7.1"
+django-stubs = {extras = ["compatible-mypy"], version = "^4.2.7"}
 
 [tool.poetry.group.docs]
 optional = true
