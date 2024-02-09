@@ -57,6 +57,14 @@
                                         <li>
                                             <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
                                         </li>
+                                        {% if user.is_superuser %}
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Portal</a>
+                                            </li>
+                                        {% endif %}
                                     </ul>
                                 </li>
                             </ul>
