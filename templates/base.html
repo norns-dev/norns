@@ -19,56 +19,59 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
                     <a class="navbar-brand" href="{% url 'home' %}">norns</a>
-                    <button class="navbar-toggler"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"
-                                   href="#"
-                                   id="partyDropdown"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false">Parties</a>
-                                <ul class="dropdown-menu" aria-labelledby="partyDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'party_list_owned' %}">Owned</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'party_list_joined' %}">Joined</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav me-right">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"
-                                   href="#"
-                                   id="userDropdown"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false">{{ user.username }}</a>
-                                <ul class="dropdown-menu dropdown-menu-end"
-                                    aria-labelledby="userDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="partyDropdown"
+                                       role="button"
+                                       data-bs-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">Parties</a>
+                                    <ul class="dropdown-menu" aria-labelledby="partyDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'party_list_owned' %}">Owned</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'party_list_joined' %}">Joined</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav me-right">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="userDropdown"
+                                       role="button"
+                                       data-bs-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">{{ user.username }}</a>
+                                    <ul class="dropdown-menu dropdown-menu-end"
+                                        aria-labelledby="userDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        {% else %}
+                            <!-- if user logged out -->
+                            <ul class="navbar-nav me-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
                 </div>
             </nav>
         </header>
