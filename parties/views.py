@@ -43,7 +43,7 @@ class PartyListViewJoined(LoginRequiredMixin, ListView):
     ordering = ["name"]
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().distinct()
         return queryset.filter(deleted_at=None, partymember__user=self.request.user)
 
 
