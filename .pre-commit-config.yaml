@@ -67,6 +67,11 @@ repos:
         entry: poetry run pyupgrade --py311-plus
         language: system
         types: [ python ]
+      - id: django-upgrade
+        name: django-upgrade
+        entry: django-upgrade --target-version 4.2
+        language: system
+        types: [ python ]
       - id: isort
         name: isort
         entry: poetry run isort .
