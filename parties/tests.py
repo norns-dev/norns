@@ -16,8 +16,8 @@ class PartyDetailPageTest(TestCase):
     @classmethod
     def setUpClass(cls):
         # Create test user
-        cls.user_params = {"username": "testuser", "password": "testing123"}
-        cls.user = User.objects.create_user(**cls.user_params, email="test@localhost")
+        cls.user_params = {"username": "testuser0", "password": "testing123"}
+        cls.user = User.objects.create_user(**cls.user_params, email="test0@localhost")
         super().setUpClass()
 
         # Create test Party
@@ -60,8 +60,8 @@ class PartyListOwnedPageTest(TestCase):
     @classmethod
     def setUpClass(cls):
         # Create test user
-        cls.user_params = {"username": "testuser", "password": "testing123"}
-        cls.user = User.objects.create_user(**cls.user_params, email="test@localhost")
+        cls.user_params = {"username": "testuser1", "password": "testing123"}
+        cls.user = User.objects.create_user(**cls.user_params, email="test1@localhost")
         super().setUpClass()
 
         # Create test Party
@@ -105,8 +105,8 @@ class PartyListOwnedPageTest(TestCase):
     @classmethod
     def setUpClass(cls):
         # Create test user
-        cls.user_params = {"username": "testuser", "password": "testing123"}
-        cls.user = User.objects.create_user(**cls.user_params, email="test@localhost")
+        cls.user_params = {"username": "testuser2", "password": "testing123"}
+        cls.user = User.objects.create_user(**cls.user_params, email="test2@localhost")
         super().setUpClass()
 
         # Create test Party
@@ -150,7 +150,7 @@ class PartyListJoinedPageTest(TestCase):
     @classmethod
     def setUpClass(cls):
         # Create test user
-        cls.user_params = {"username": "testuser", "password": "testing123"}
+        cls.user_params = {"username": "testuser3", "password": "testing123"}
         cls.user = User.objects.create_user(**cls.user_params, email="test@localhost")
         super().setUpClass()
 
