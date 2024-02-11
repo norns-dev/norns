@@ -12,6 +12,7 @@ class PartyMemberInLine(admin.TabularInline):
     extra = 0
 
 
+@admin.register(Party)
 class PartyAdmin(admin.ModelAdmin):
     """Admin for parties"""
 
@@ -19,5 +20,4 @@ class PartyAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
 
-admin.site.register(Party, PartyAdmin)
 admin.site.register(PartyMember)
