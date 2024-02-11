@@ -7,6 +7,7 @@ from .forms import CustomUserChangeForm, CustomUserCreationForm
 from .models import CustomUser
 
 
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     """Custom user admin"""
 
@@ -26,6 +27,3 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = UserAdmin.add_fieldsets + (
         (None, {"fields": ("location", "timezone")}),
     )
-
-
-admin.site.register(CustomUser, CustomUserAdmin)

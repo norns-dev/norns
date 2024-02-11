@@ -481,6 +481,20 @@ files = [
 django = ">=4.2"
 
 [[package]]
+name = "django-upgrade"
+version = "1.15.0"
+description = "Automatically upgrade your Django project code."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_upgrade-1.15.0-py3-none-any.whl", hash = "sha256:ced9f859729a116cf6edb2951767c7d5140c7c11f61fed00cf30ebe9d382477a"},
+    {file = "django_upgrade-1.15.0.tar.gz", hash = "sha256:b62cc4f5c86ba687196e894c2795264c0f399bbbff69f30d381374b3d0407dbc"},
+]
+
+[package.dependencies]
+tokenize-rt = ">=4.1.0"
+
+[[package]]
 name = "docutils"
 version = "0.20.1"
 description = "Docutils -- Python Documentation Utilities"
@@ -1434,4 +1448,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "af7c6ee7069c4c4f4e3bc45618cfe7e28ab3b6e32b9ac523e318e8c7472254b9"
+content-hash = "85274e0a3f8ade67ebb30cbcf60580fb7fc5121c26713d57804aa03894ca1dbf"
