@@ -1,0 +1,13 @@
+fly.toml
+.git/
+*.sqlite3
+.env
+.github/
+.gitignore
+.venv/
+docs/
+dev-env/
+.flake8
+.pre-commit-config.yaml
+LICENSE
+README.md
