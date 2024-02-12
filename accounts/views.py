@@ -34,11 +34,13 @@ class UpdateUserView(UpdateView, LoginRequiredMixin):
 
     model = CustomUser
     fields = (
-        "email",
         "first_name",
         "last_name",
         "location",
         "timezone",
+        "email",
+        "phone_number",
+        "discord_username",
     )
     template_name = "registration/user_update.html"
     success_url = reverse_lazy("user_update_complete", args=[1])
