@@ -19,6 +19,8 @@ class CustomUserCreationForm(UserCreationForm):
             "timezone",
             "first_name",
             "last_name",
+            "phone_number",
+            "discord_username",
         )
 
 
@@ -31,9 +33,11 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = (
             "username",
-            "email",
-            "location",
-            "timezone",
             "first_name",
             "last_name",
+            "location",
+            "timezone",
+            "email",
+            "phone_number",
+            "discord_username",
         )

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block title %}
-    Log In
+    Update Profile
 {% endblock title %}
 {% block content %}
-    <h2>Update User</h2>
+    <h2>Update User - {{ user.username }}</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
