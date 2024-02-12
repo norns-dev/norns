@@ -482,17 +482,17 @@ django = ">=4.2"
 
 [[package]]
 name = "django-upgrade"
-version = "1.15.0"
+version = "1.16.0"
 description = "Automatically upgrade your Django project code."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "django_upgrade-1.15.0-py3-none-any.whl", hash = "sha256:ced9f859729a116cf6edb2951767c7d5140c7c11f61fed00cf30ebe9d382477a"},
-    {file = "django_upgrade-1.15.0.tar.gz", hash = "sha256:b62cc4f5c86ba687196e894c2795264c0f399bbbff69f30d381374b3d0407dbc"},
+    {file = "django-upgrade-1.16.0.tar.gz", hash = "sha256:7e473e8ecf234a531448d4a0c1c772746fa831fc762eae3d7578f13f6d847370"},
+    {file = "django_upgrade-1.16.0-py3-none-any.whl", hash = "sha256:605708b130368ee6dd304df00253f184a7c2f00d1c2dd5d4dac41a31307a2a14"},
 ]
 
 [package.dependencies]
-tokenize-rt = ">=4.1.0"
+tokenize-rt = ">=4.1"
 
 [[package]]
 name = "docutils"
@@ -1448,4 +1448,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "d71532174433377a35464eae2fbc32c64b2803cf721610c1080b298704a63b5d"
+content-hash = "789f49ee9529478a9b2615a56f836c95cc90d735899f98808afaf7e9a6299405"
