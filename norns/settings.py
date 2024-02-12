@@ -35,6 +35,7 @@ ALLOWED_HOSTS = (
     if DEBUG
     else [".fly.dev"]
 )
+CSRF_TRUSTED_ORIGINS = ["https://norns-dev.fly.dev"]
 
 # Application definition
 
