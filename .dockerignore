@@ -1,0 +1,15 @@
+fly.toml
+.git/
+*.sqlite3
+.env
+.github/
+.gitignore
+.venv/
+docs/
+dev-env/
+.idea/
+.flake8
+.pre-commit-config.yaml
+LICENSE
+README.md
+__pycache__/
