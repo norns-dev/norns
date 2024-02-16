@@ -12,9 +12,9 @@ env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = env.str("SECRET_KEY", get_random_secret_key())
+SECRET_KEY = env.str("SECRET_KEY", default=get_random_secret_key())
 
-DEBUG = env.bool("DJANGO_DEBUG", False)
+DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
 ALLOWED_HOSTS = (
     ["localhost", "127.0.0.1", "0.0.0.0", ".fly.dev"]  # nosec
