@@ -12,9 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PY_VERSION: "3.11"
+      POETRY_VERSION: "1.7.1"
     steps:
       - uses: actions/checkout@v4
-      - uses: snok/install-poetry@v1
+      - name: Load cached Poetry installation
+        id: cached-poetry
+        uses: actions/cache@v3
+        with:
+          path: ~/.local  # the path depends on the OS
+          key: poetry-${{ env.POETRY_VERSION }}  # increment to reset cache
+      - name: Install Poetry
+        if: steps.cached-poetry.outputs.cache-hit != 'true'
+        uses: snok/install-poetry@v1
       - name: Set up Python 3.11 on ubuntu-latest
         uses: actions/setup-python@v5
         with:
