@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "bootstrap5",
+    "anymail",
     # Local
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
@@ -130,4 +131,10 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Email Settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+ANYMAIL = {
+    "MAILGUN_API_KEY": env.str("MAILGUN_API_KEY"),
+    "MAILGUN_SENDER_DOMAIN": "sandbox47faa663e00742689c3938a7696a8e4d.mailgun.org",
+}
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+DEFAULT_FROM_EMAIL = "norns@norns.joshodell.com"
+SERVER_EMAIL = "norns-server@norns.joshodell.com"
