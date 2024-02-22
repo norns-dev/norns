@@ -19,8 +19,8 @@ jobs:
         id: cached-poetry
         uses: actions/cache@v3
         with:
-          path: ~/.local  # the path depends on the OS
-          key: poetry-${{ env.POETRY_VERSION }}  # increment to reset cache
+          path: ~/.local
+          key: poetry-${{ env.POETRY_VERSION }}
       - name: Install Poetry
         if: steps.cached-poetry.outputs.cache-hit != 'true'
         uses: snok/install-poetry@v1
