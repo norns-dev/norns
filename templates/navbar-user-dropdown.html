@@ -9,13 +9,13 @@
     <ul class="dropdown-menu dropdown-menu-end"
         aria-labelledby="userDropdown">
         <li>
-            <a class="dropdown-item" href="{% url 'update_user' user.pk %}">Update Profile</a>
+            <a class="dropdown-item" href="#">Update Profile</a>
         </li>
         <li>
-            <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+            <a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
         </li>
         <li>
-            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+            <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
         </li>
         {% if user.is_superuser %}
             <li>
