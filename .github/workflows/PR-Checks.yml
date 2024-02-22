@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python 3.11 on ubuntu-latest
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PY_VERSION }}
           cache: "poetry"
       - name: Install dependencies
         run: poetry install --no-interaction --with dev
