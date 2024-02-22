@@ -5,14 +5,14 @@ on:
       - "main"
       - "develop"
       - "release/**"
+env:
+  PY_VERSION: "3.11"
+  POETRY_VERSION: "1.7.1"
 
 jobs:
   style:
     name: "pre-commit Checks"
     runs-on: ubuntu-latest
-    env:
-      PY_VERSION: "3.11"
-      POETRY_VERSION: "1.7.1"
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation
@@ -27,7 +27,7 @@ jobs:
         with:
           version: ${{ env.POETRY_VERSION }}
           installer-parallel: true
-      - name: Set up Python 3.11 on ubuntu-latest
+      - name: Set up Python ${{ env.PY_VERSION }} on ubuntu-latest
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PY_VERSION }}
@@ -41,8 +41,6 @@ jobs:
     needs: [ style ]
     runs-on: ubuntu-latest
     env:
-      PY_VERSION: "3.11"
-      POETRY_VERSION: "1.7.1"
       SECRET_KEY: "z1sr@98lg&8@jz)i2nhj0)ic7em-!_g*3o^b!!pit%q$=d+t5o"
       DJANGO_DEBUG: "True"
     steps:
@@ -59,10 +57,10 @@ jobs:
         with:
           version: ${{ env.POETRY_VERSION }}
           installer-parallel: true
-      - name: Set up Python 3.11 on ubuntu-latest
+      - name: Set up Python ${{ env.PY_VERSION }} on ubuntu-latest
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PY_VERSION }}
           cache: "poetry"
       - name: Install dependencies
         run: poetry install --no-interaction
@@ -73,8 +71,6 @@ jobs:
     name: "Build Docs"
     needs: [ tests ]
     runs-on: ubuntu-latest
-    env:
-      POETRY_VERSION: "1.7.1"
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation
@@ -89,10 +85,10 @@ jobs:
         with:
           version: ${{ env.POETRY_VERSION }}
           installer-parallel: true
-      - name: Set up Python 3.11 on ubuntu-latest
+      - name: Set up Python ${{ env.PY_VERSION }} on ubuntu-latest
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PY_VERSION }}
           cache: "poetry"
       - name: Install dependencies
         run: poetry install --no-interaction --with docs
