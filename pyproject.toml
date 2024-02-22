@@ -33,6 +33,7 @@ pytest = "^8.0.1"
 pytest-cov = "^4.1.0"
 pyupgrade = "^3.15.1"
 django-upgrade = "^1.16.0"
+pytest-django = "^4.8.0"
 
 [tool.poetry.group.docs]
 optional = true

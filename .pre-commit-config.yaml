@@ -22,6 +22,7 @@ repos:
       # python checks
       - id: name-tests-test # verifies that test files are named correctly
         args: [ "--pytest-test-first" ]
+        exclude: ^(.*/tests/factories.py)$
       - id: check-docstring-first # checks for code before the docstring
       - id: debug-statements # check for debugger imports and breakpoint calls in python source
       # git checks
@@ -62,6 +63,7 @@ repos:
         entry: poetry run bandit
         language: system
         types: [ python ]
+        exclude: ^(.*/tests.py|.*/tests/.*|.*/migrations/.*.py|docs/.*)$
       - id: pyupgrade
         name: pyupgrade
         entry: poetry run pyupgrade --py311-plus
@@ -93,7 +95,7 @@ repos:
         entry: poetry run pylint -rn -sn
         language: system
         types: [ python ]
-        exclude: ^(.*/tests.py|.*/migrations/.*.py|docs/.*)$
+        exclude: ^(.*/tests.py|.*/tests/.*|.*/migrations/.*.py|docs/.*)$
       - id: poetry-sync
         name: poetry-sync
         entry: poetry install --sync --with dev
