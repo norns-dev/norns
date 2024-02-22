@@ -69,7 +69,7 @@ repos:
         types: [ python ]
       - id: django-upgrade
         name: django-upgrade
-        entry: django-upgrade --target-version 4.2
+        entry: poetry run django-upgrade --target-version 4.2
         language: system
         types: [ python ]
       - id: isort
