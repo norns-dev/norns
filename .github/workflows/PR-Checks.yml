@@ -24,6 +24,9 @@ jobs:
       - name: Install Poetry
         if: steps.cached-poetry.outputs.cache-hit != 'true'
         uses: snok/install-poetry@v1
+        with:
+          version: ${{ env.POETRY_VERSION }}
+          installer-parallel: true
       - name: Set up Python 3.11 on ubuntu-latest
         uses: actions/setup-python@v5
         with:
