@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from django.core.mail import send_mail
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
 
@@ -56,3 +57,13 @@ class SignupPageTests(TestCase):
         self.assertEqual(get_user_model().objects.all().count(), 1)
         self.assertEqual(get_user_model().objects.all()[0].username, "testuser")
         self.assertEqual(get_user_model().objects.all()[0].email, "testuser@email.com")
+
+
+class EmailBackendTesting(SimpleTestCase):
+    def test_send_mail(self):
+        send_mail(
+            "It works!",
+            "This will get sent through Mailgun",
+            "norns <norns@norns.joshodell.com>",
+            ["j01101111sh@gmail.com"],
+        )

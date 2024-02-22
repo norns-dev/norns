@@ -44,6 +44,7 @@ jobs:
     env:
       SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       DJANGO_DEBUG: ${{ vars.DJANGO_DEBUG }}
+      MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation
