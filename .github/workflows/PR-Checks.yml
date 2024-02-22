@@ -26,8 +26,7 @@ jobs:
           cache: "poetry"
       - name: Install dependencies
         run: poetry install --no-interaction --with dev
-      - name: Run pre-commit
-        run: poetry run pre-commit run --all-files --show-diff-on-failure
+      - uses: pre-commit/action@v3.0.1
 
   tests:
     name: "Unit Testing"
