@@ -41,8 +41,8 @@ jobs:
     needs: [ style ]
     runs-on: ubuntu-latest
     env:
-      SECRET_KEY: "z1sr@98lg&8@jz)i2nhj0)ic7em-!_g*3o^b!!pit%q$=d+t5o"
-      DJANGO_DEBUG: "True"
+      SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+      DJANGO_DEBUG: ${{ vars.DJANGO_DEBUG }}
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation
