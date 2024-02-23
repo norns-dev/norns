@@ -2,13 +2,13 @@
 Tests for parties app
 """
 
-from django.apps import apps
+from allauth.account.models import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
 from .models import Party
 
-User = apps.get_model("accounts", "CustomUser")
+User = get_user_model()
 
 
 class PartyDetailPageTest(TestCase):

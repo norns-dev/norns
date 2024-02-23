@@ -6,13 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView
 
-from .models import CustomUser
+from .models import UserProfile
 
 
 class UserProfileView(LoginRequiredMixin, DetailView):
     """User profile view"""
 
-    model = CustomUser
+    model = UserProfile
 
     template_name = "registration/user_update_complete.html"
 
@@ -23,7 +23,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
 class UpdateUserView(UpdateView, LoginRequiredMixin):
     """Update user view"""
 
-    model = CustomUser
+    model = UserProfile
     fields = (
         "first_name",
         "last_name",
