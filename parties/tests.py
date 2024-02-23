@@ -3,12 +3,13 @@ Tests for parties app
 """
 
 from django.apps import apps
+from django.conf import settings
 from django.test import TestCase
 from django.urls import reverse
 
 from .models import Party
 
-User = apps.get_model("accounts", "CustomUser")
+User = settings.AUTH_USER_MODEL
 
 
 class PartyDetailPageTest(TestCase):
