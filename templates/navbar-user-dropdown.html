@@ -9,7 +9,7 @@
     <ul class="dropdown-menu dropdown-menu-end"
         aria-labelledby="userDropdown">
         <li>
-            <a class="dropdown-item" href="#">Update Profile</a>
+            <a class="dropdown-item" href="{% url 'update_user' user.pk %}">Update Profile</a>
         </li>
         <li>
             <a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
