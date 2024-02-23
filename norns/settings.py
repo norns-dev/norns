@@ -10,12 +10,16 @@ from environs import Env
 env = Env()
 env.read_env()
 
+# General Django settings
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env.str("SECRET_KEY", default=get_random_secret_key())
 
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
+SITE_ID = 1
+
+# Host settings
 ALLOWED_HOSTS = (
     ["localhost", "127.0.0.1", "0.0.0.0", ".fly.dev"]  # nosec
     if DEBUG
@@ -37,6 +41,10 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "bootstrap5",
     "anymail",
+    # django-allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     # Local
     "pages.apps.PagesConfig",
     "accounts.apps.AccountsConfig",
@@ -51,6 +59,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
@@ -79,7 +88,7 @@ DATABASES = {
     "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
 
-# Password validation
+# Authentication and password validation
 AUTH_PASSWORD_VALIDATORS = [
     {  # pylint: disable-next=line-too-long
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -95,7 +104,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL = True
 
 # Internationalization
 LANGUAGE_CODE = "en-us"
