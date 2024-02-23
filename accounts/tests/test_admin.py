@@ -5,27 +5,27 @@ from importlib import reload
 import pytest
 from django.contrib import admin
 from django.contrib.auth.models import AnonymousUser
+from django.test import TestCase
 from django.urls import reverse
-from pytest_django.asserts import assertRedirects
 
 from ..models import CustomUser
 
 
-class TestUserAdmin:
+class TestUserAdmin(TestCase):
     def test_changelist(self, admin_client):
         url = reverse("admin:users_user_changelist")
         response = admin_client.get(url)
-        assert response.status_code == HTTPStatus.OK
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_search(self, admin_client):
         url = reverse("admin:users_user_changelist")
         response = admin_client.get(url, data={"q": "test"})
-        assert response.status_code == HTTPStatus.OK
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_add(self, admin_client):
         url = reverse("admin:users_user_add")
         response = admin_client.get(url)
-        assert response.status_code == HTTPStatus.OK
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
         response = admin_client.post(
             url,
@@ -35,14 +35,14 @@ class TestUserAdmin:
                 "password2": "My_R@ndom-P@ssw0rd",
             },
         )
-        assert response.status_code == HTTPStatus.FOUND
-        assert CustomUser.objects.filter(username="test").exists()
+        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+        self.assertTrue(CustomUser.objects.filter(username="test").exists())
 
     def test_view_user(self, admin_client):
         user = CustomUser.objects.get(username="admin")
         url = reverse("admin:users_user_change", kwargs={"object_id": user.pk})
         response = admin_client.get(url)
-        assert response.status_code == HTTPStatus.OK
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     @pytest.fixture()
     def _force_allauth(self, settings):
@@ -62,4 +62,4 @@ class TestUserAdmin:
 
         # The `admin` login view should redirect to the `allauth` login view
         target_url = reverse(settings.LOGIN_URL) + "?next=" + request.path
-        assertRedirects(response, target_url, fetch_redirect_response=False)
+        self.assertRedirects(response, target_url, fetch_redirect_response=False)

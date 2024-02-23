@@ -1,12 +1,13 @@
 """Module for all Form Tests."""
 
+from django.test import TestCase
 from django.utils.translation import gettext_lazy as _
 
 from ..forms import UserAdminCreationForm
 from ..models import CustomUser
 
 
-class TestUserAdminCreationForm:
+class TestUserAdminCreationForm(TestCase):
     """
     Test class for all tests related to the UserAdminCreationForm
     """
@@ -29,7 +30,9 @@ class TestUserAdminCreationForm:
             },
         )
 
-        assert not form.is_valid()
-        assert len(form.errors) == 1
-        assert "username" in form.errors
-        assert form.errors["username"][0] == _("This username has already been taken.")
+        self.assertFalse(form.is_valid())
+        self.assertEqual(len(form.errors), 1)
+        self.assertIn("username", form.errors)
+        self.assertEqual(
+            form.errors["username"][0], _("This username has already been taken.")
+        )

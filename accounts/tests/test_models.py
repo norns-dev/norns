@@ -1,5 +1,8 @@
+from django.test import SimpleTestCase
+
 from ..models import CustomUser
 
 
-def test_user_get_absolute_url(user: CustomUser):
-    assert user.get_absolute_url() == f"/users/{user.username}/"
+class TestAccountsModels(SimpleTestCase):
+    def test_user_get_absolute_url(self, user: CustomUser):
+        self.assertEqual(user.get_absolute_url(), f"/users/{user.username}/")

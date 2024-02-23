@@ -63,7 +63,6 @@ repos:
         entry: poetry run bandit
         language: system
         types: [ python ]
-        exclude: ^(.*/tests.py|.*/tests/.*|.*/migrations/.*.py|docs/.*)$
       - id: pyupgrade
         name: pyupgrade
         entry: poetry run pyupgrade --py311-plus
