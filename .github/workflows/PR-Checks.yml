@@ -39,7 +39,6 @@ jobs:
   tests:
     name: "Unit Testing"
     runs-on: ubuntu-latest
-    environment: testing
     env:
       SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       DJANGO_DEBUG: ${{ vars.DJANGO_DEBUG }}
