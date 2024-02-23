@@ -101,7 +101,6 @@ jobs:
 
   analyze:
     name: Analyze
-    needs: [ style, tests, docs ]
     runs-on: ubuntu-latest
     permissions:
       actions: read
