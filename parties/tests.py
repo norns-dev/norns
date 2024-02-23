@@ -2,7 +2,6 @@
 Tests for parties app
 """
 
-from django.apps import apps
 from django.conf import settings
 from django.test import TestCase
 from django.urls import reverse
