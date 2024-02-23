@@ -2,12 +2,12 @@
 
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
+from django import forms
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserChangeForm
 from django.utils.translation import gettext_lazy as _
 
-from .models import CustomUser
+from .models import UserProfile
 
 User = get_user_model()
 
@@ -52,20 +52,16 @@ class UserSocialSignupForm(SocialSignupForm):
     """
 
 
-class CustomUserChangeForm(UserChangeForm):
+class UserProfileChangeForm(forms.ModelForm):
     """User change form"""
 
     class Meta:
         """Meta class."""
 
-        model = CustomUser
+        model = UserProfile
         fields = (
-            "username",
-            "first_name",
-            "last_name",
             "location",
             "timezone",
-            "email",
             "phone_number",
             "discord_username",
         )

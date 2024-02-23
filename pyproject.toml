@@ -56,6 +56,8 @@ disable = [
     "R0801", # similar lines in 2 files
     "R0901", # too many ancestors
     "R0903", # too few public methods
+    "C0415", # import outside toplevel
+    "E1101", # no-member
 ]
 
 [tool.pylint.format]
