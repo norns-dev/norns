@@ -15,3 +15,6 @@ class UserProfile(models.Model):
     timezone = models.CharField(max_length=32, choices=TIMEZONES, default="UTC")
     phone_number = models.CharField(max_length=15, null=True, blank=True)
     discord_username = models.CharField(max_length=50, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
