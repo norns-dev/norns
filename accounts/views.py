@@ -4,18 +4,9 @@ Views for accounts app on norns
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import DetailView, UpdateView
 
-from .forms import CustomUserCreationForm
 from .models import CustomUser
-
-
-class SignUpView(CreateView):
-    """Sign up view for norns"""
-
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
 
 
 class UserProfileView(LoginRequiredMixin, DetailView):

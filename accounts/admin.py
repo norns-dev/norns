@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .forms import CustomUserChangeForm, UserAdminCreationForm
 from .models import CustomUser
 
 
@@ -11,7 +11,7 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
     """Custom user admin"""
 
-    add_form = CustomUserCreationForm
+    add_form = UserAdminCreationForm
     form = CustomUserChangeForm
     model = CustomUser
     list_display = [
