@@ -40,7 +40,7 @@ repos:
       - id: rst-directive-colons # detect rst directive formatting
       - id: rst-inline-touching-normal # detect inline code touching normal text in rst
   - repo: https://github.com/python-poetry/poetry
-    rev: 1.7.1
+    rev: 1.8.1
     hooks:
       - id: poetry-check # checks poetry config is not broken
       - id: poetry-lock # ensures lock file is up-to-date
