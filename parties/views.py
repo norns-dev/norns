@@ -13,7 +13,7 @@ from django.views.generic import (
 )
 from django.views.generic.detail import SingleObjectMixin
 
-from .forms import PartyMemberForm
+from .forms import NewPartyForm, PartyMemberForm
 from .models import Party, PartyMember
 
 
@@ -118,10 +118,7 @@ class PartyCreateView(LoginRequiredMixin, CreateView):
 
     model = Party
     template_name = "parties/party_new.html"
-    fields = (
-        "name",
-        "description",
-    )
+    form_class = NewPartyForm
 
     def form_valid(self, form):
         form.instance.dm = self.request.user

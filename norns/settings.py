@@ -157,3 +157,6 @@ ANYMAIL = {
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 DEFAULT_FROM_EMAIL = "norns@norns.joshodell.com"
 SERVER_EMAIL = "norns-server@norns.joshodell.com"
+
+# CKEditor
+CKEDITOR_BASEPATH = "/staticfiles/ckeditor/ckeditor/"
