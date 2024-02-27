@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block content %}
     {% if user.is_authenticated %}
-        <p>Hi {{ user.username }}!</p>
+        <p>Hi {{ user.username }}! Welcome to norns!</p>
         <p>
             <a href="{% url 'account_logout' %}">Log Out</a>
         </p>
