@@ -25,11 +25,8 @@ class UpdateUserView(UpdateView, LoginRequiredMixin):
 
     model = UserProfile
     fields = (
-        "first_name",
-        "last_name",
         "location",
         "timezone",
-        "email",
         "phone_number",
         "discord_username",
     )
