@@ -14,7 +14,7 @@ from django.views.generic import (
 from django.views.generic.detail import SingleObjectMixin
 
 from .forms import PartyMemberForm
-from .models import Party
+from .models import Party, PartyMember
 
 
 class MemberGet(DetailView):
@@ -49,8 +49,8 @@ class AddPartyMember(SingleObjectMixin, FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        article = self.object
-        return reverse("party_detail", kwargs={"pk": article.pk})
+        party = self.object
+        return reverse("party_detail", kwargs={"pk": party.pk})
 
 
 class PartyDetailView(LoginRequiredMixin, View):
@@ -126,3 +126,17 @@ class PartyCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.dm = self.request.user
         return super().form_valid(form)
+
+
+class RemoveMemberView(LoginRequiredMixin, DeleteView):
+    """Delete party member view"""
+
+    model = PartyMember
+    template_name = "parties/member_remove.html"
+
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(party__dm=self.request.user)
+
+    def get_success_url(self):
+        party = self.object.party
+        return reverse("party_detail", kwargs={"pk": party.pk})
