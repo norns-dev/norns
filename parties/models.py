@@ -1,5 +1,6 @@
 """Models for parties app"""
 
+from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -71,7 +72,7 @@ class Party(SoftDeleteModel):
     """Party model"""
 
     name = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)
+    description = RichTextField(null=True, blank=True)
     dm = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
 
