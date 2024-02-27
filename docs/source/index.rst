@@ -15,6 +15,9 @@ for the future, including:
 - Party chat
 - And more...
 
+As a proof of concept, the exact configuration is specific to my implementation and as such there are no deployment
+instructions. Expect these to be completed in a future release.
+
 =======
 Indices
 =======
