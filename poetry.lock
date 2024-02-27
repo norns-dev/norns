@@ -639,6 +639,21 @@ files = [
 ]
 
 [[package]]
+name = "django-ckeditor"
+version = "6.7.1"
+description = "Django admin CKEditor integration."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-ckeditor-6.7.1.tar.gz", hash = "sha256:7144f9ead662306266c728912487313b3b87ba2abf9dbb82c447f662ce25d1f7"},
+    {file = "django_ckeditor-6.7.1-py3-none-any.whl", hash = "sha256:55b5f9ce3af47e3c8a8ed37d42be8439da2a664d6e571c2247c1db5c96459dd7"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+django-js-asset = ">=2.0"
+
+[[package]]
 name = "django-crispy-forms"
 version = "2.1"
 description = "Best way to have Django DRY forms"
@@ -651,6 +666,23 @@ files = [
 
 [package.dependencies]
 django = ">=4.2"
+
+[[package]]
+name = "django-js-asset"
+version = "2.2.0"
+description = "script tag with additional attributes for django.forms.Media"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_js_asset-2.2.0-py3-none-any.whl", hash = "sha256:7ef3e858e13d06f10799b56eea62b1e76706f42cf4e709be4e13356bc0ae30d8"},
+    {file = "django_js_asset-2.2.0.tar.gz", hash = "sha256:0c57a82cae2317e83951d956110ce847f58ff0cdc24e314dbc18b35033917e94"},
+]
+
+[package.dependencies]
+django = ">=3.2"
+
+[package.extras]
+tests = ["coverage"]
 
 [[package]]
 name = "django-upgrade"
@@ -1821,4 +1853,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "956ef5741a60210d17b748154e4c8afbcf442042758e8c70242d015bba7e2f4e"
+content-hash = "a5d4a1e3aa9243bbb1d63ee018ca407fb5c37769d9459cb5065f640e33a821d4"
