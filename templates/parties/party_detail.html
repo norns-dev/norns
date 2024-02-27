@@ -8,7 +8,14 @@
     <hr>
     <h4>Members ({{ object.partymember_set.count }})</h4>
     {% for member in party.partymember_set.all %}
-        <p>{{ member.character_name }} - ({{ member.user.username }})</p>
+        <p>
+            {{ member.character_name }} - ({{ member.user.username }})
+            {% if user == party.dm %}
+                <a class="btn btn-danger btn-sm"
+                   href="{% url "member_remove" member.pk %}"
+                   role="button">Remove</a>
+            {% endif %}
+        </p>
     {% endfor %}
     {% if party.dm == request.user %}
         <h4>Add a party member</h4>
