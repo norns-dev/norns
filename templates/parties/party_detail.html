@@ -3,7 +3,7 @@
 {% block content %}
     <div class="party-detail">
         <h2>{{ object.name }}</h2>
-        <p>{{ object.description }}</p>
+        <p>{{ object.formatted_description|safe }}</p>
     </div>
     <hr>
     <h4>Members ({{ object.partymember_set.count }})</h4>

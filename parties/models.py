@@ -5,6 +5,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
 from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 
 class SoftDeleteQuerySet(models.query.QuerySet):
@@ -83,6 +84,11 @@ class Party(SoftDeleteModel):
 
     def __str__(self):
         return str(self.name)
+
+    @property
+    def formatted_description(self):
+        """Formats markdown as HTML"""
+        return markdownify(self.description)
 
     def get_absolute_url(self):
         """Returns absolute URL for parties detail view"""
