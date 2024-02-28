@@ -109,3 +109,25 @@ class PartyMember(SoftDeleteModel):
     def get_absolute_url(self):
         """Returns absolute URL for party members detail view"""
         return reverse("party_member_detail", kwargs={"pk": self.pk})
+
+
+class PartyBlogPost(SoftDeleteModel):
+    """Blog post model for parties"""
+
+    party = models.ForeignKey(Party, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    title = models.CharField(max_length=100)
+    content = MarkdownxField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.title)
+
+    @property
+    def formatted_content(self):
+        """Formats markdown as HTML"""
+        return markdownify(self.content)
+
+    def get_absolute_url(self):
+        """Returns absolute URL for parties detail view"""
+        return reverse("party_blog_post", kwargs={"pk": self.pk})

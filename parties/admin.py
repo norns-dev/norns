@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from .models import Party, PartyMember
+from .models import Party, PartyBlogPost, PartyMember
 
 
 class PartyMemberInLine(admin.TabularInline):
@@ -18,6 +18,11 @@ class PartyAdmin(admin.ModelAdmin):
 
     inlines = [PartyMemberInLine]
     list_display = ["name"]
+
+
+@admin.register(PartyBlogPost)
+class PartyBlogPostAdmin(admin.ModelAdmin):
+    """Admin for party blog posts"""
 
 
 admin.site.register(PartyMember)

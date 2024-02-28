@@ -14,7 +14,7 @@ from django.views.generic import (
 from django.views.generic.detail import SingleObjectMixin
 
 from .forms import PartyMemberForm
-from .models import Party, PartyMember
+from .models import Party, PartyBlogPost, PartyMember
 
 
 class MemberGet(DetailView):
@@ -140,3 +140,19 @@ class RemoveMemberView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         party = self.object.party
         return reverse("party_detail", kwargs={"pk": party.pk})
+
+
+class PartyBlogListView(LoginRequiredMixin, ListView):
+    """All blog posts for the party"""
+
+    model = PartyBlogPost
+    template_name = "parties/blog/party_blog_list.html"
+    ordering = "-created_at"
+
+    def get_queryset(self, **kwargs):
+        queryset = super().get_queryset(**kwargs)
+        return queryset.filter(
+            deleted_at=None,
+            party__partymember__user=self.request.user,
+            party__partymember__deleted_at=None,
+        )
