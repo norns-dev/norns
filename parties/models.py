@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
+from markdownx.models import MarkdownxField
 
 
 class SoftDeleteQuerySet(models.query.QuerySet):
@@ -71,7 +72,7 @@ class Party(SoftDeleteModel):
     """Party model"""
 
     name = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)
+    description = MarkdownxField(null=True, blank=True)
     dm = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
 
