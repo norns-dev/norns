@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+    <h2>
+        {% block pageheader %}
+        {% endblock pageheader %}
+    </h2>
+    {% for partyblogpost in partyblogpost_list %}
+        <div class="card">
+            <h3 class="card-header">
+                <span class="float-start">
+                    <a class="fw-bold link-dark text-decoration-none" href="#">{{ partyblogpost.title }}</a>
+                </span>
+                <span class="text-muted float-end">{{ partyblogpost.author }} @ {{ partyblogpost.created_at }}</span>
+            </h3>
+            <div class="card-body">{{ partyblogpost.formatted_content|safe }}</div>
+        </div>
+        <br />
+    {% endfor %}
+{% endblock content %}

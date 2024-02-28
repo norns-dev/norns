@@ -3,6 +3,7 @@
 from django.urls import path
 
 from .views import (
+    PartyBlogListView,
     PartyCreateView,
     PartyDeleteView,
     PartyDetailView,
@@ -20,5 +21,6 @@ urlpatterns = [
     path("new/", PartyCreateView.as_view(), name="party_new"),
     path("joined/", PartyListViewJoined.as_view(), name="party_list_joined"),
     path("owned/", PartyListViewOwned.as_view(), name="party_list_owned"),
-    path("", PartyListViewJoined.as_view(), name="party_list_joined"),
+    path("<int:pk>/blog/", PartyBlogListView.as_view(), name="party_blog_list"),
+    path("", PartyBlogListView.as_view(), name="party_list_joined"),
 ]
