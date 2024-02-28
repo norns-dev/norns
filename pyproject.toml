@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "norns"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Josh Odell <j01101111sh@gmail.com>"]
 readme = "README.md"
