@@ -73,7 +73,7 @@ class Party(SoftDeleteModel):
     """Party model"""
 
     name = models.CharField(max_length=100)
-    description = MarkdownxField(null=True, blank=True)
+    description = MarkdownxField()
     dm = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
 
