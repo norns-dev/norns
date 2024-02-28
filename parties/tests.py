@@ -21,7 +21,9 @@ class PartyDetailPageTest(TestCase):
         super().setUpClass()
 
         # Create test Party
-        party = Party.objects.create(name="testparty", dm=cls.user)
+        party = Party.objects.create(
+            name="testparty", dm=cls.user, description="testdescription"
+        )
         party.save()
 
         # Set reusable variables
@@ -65,7 +67,9 @@ class PartyListOwnedPageTest(TestCase):
         super().setUpClass()
 
         # Create test Party
-        party = Party.objects.create(name="testparty", dm=cls.user)
+        party = Party.objects.create(
+            name="testparty", dm=cls.user, description="testdescription"
+        )
         party.save()
 
         # Set reusable variables
@@ -110,7 +114,9 @@ class PartyListJoinedPageTest(TestCase):
         super().setUpClass()
 
         # Create test Party
-        party = Party.objects.create(name="testparty", dm=cls.user)
+        party = Party.objects.create(
+            name="testparty", dm=cls.user, description="testdescription"
+        )
         party.save()
 
         # Set reusable variables
@@ -155,7 +161,9 @@ class PartyEditPageTest(TestCase):
         super().setUpClass()
 
         # Create test Party
-        party = Party.objects.create(name="testparty", dm=cls.user)
+        party = Party.objects.create(
+            name="testparty", dm=cls.user, description="testdescription"
+        )
         party.save()
 
         # Set reusable variables
@@ -199,7 +207,9 @@ class PartyDeletePageTest(TestCase):
         super().setUpClass()
 
         # Create test Party
-        party = Party.objects.create(name="testparty", dm=cls.user)
+        party = Party.objects.create(
+            name="testparty", dm=cls.user, description="testdescription"
+        )
         party.save()
 
         # Set reusable variables

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "bootstrap5",
     "anymail",
+    "markdownx",
     # django-allauth
     "allauth",
     "allauth.account",
