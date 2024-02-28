@@ -11,6 +11,7 @@ class UserProfile(models.Model):
     TIMEZONES = tuple(zip(pytz.all_timezones, pytz.all_timezones))
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    name = models.CharField(blank=True, max_length=255)
     location = models.CharField(max_length=50, null=True, blank=True)
     timezone = models.CharField(max_length=32, choices=TIMEZONES, default="UTC")
     phone_number = models.CharField(max_length=15, null=True, blank=True)
