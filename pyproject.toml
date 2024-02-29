@@ -35,6 +35,8 @@ pytest-cov = "^4.1.0"
 pyupgrade = "^3.15.1"
 django-upgrade = "^1.16.0"
 factory-boy = "^3.3.0"
+django-coverage-plugin = "^3.1.0"
+pytest-django = "^4.8.0"
 
 [tool.poetry.group.docs]
 optional = true
