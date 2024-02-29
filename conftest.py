@@ -14,5 +14,10 @@ def _media_storage(settings, tmpdir) -> None:
 @pytest.fixture()
 def user(db):
     """User fixture"""
-    _ = db
+    return UserFactory()
+
+
+@pytest.fixture()
+def user2(db):
+    """User fixture"""
     return UserFactory()

@@ -76,8 +76,8 @@ max-line-length = "88"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "norns.settings"
-testpaths = ["tests"]
-python_files = "*.py"
+addopts = "--reuse-db"
+python_files = "test_*.py"
 python_functions = "test_*"
 
 log_cli = true

@@ -2,11 +2,26 @@
 Tests for party_new page
 """
 
+from http import HTTPStatus
+
+import pytest
 from allauth.account.models import get_user_model
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
+from ..views import PartyCreateView
+
 User = get_user_model()
+pytestmark = pytest.mark.django_db
+
+
+class TestNewPartyPage:
+    def test_url_exists_at_correct_location(self, user, user2):
+        request = RequestFactory().get("/fake-url/")
+        request.user = user2
+        response = PartyCreateView.as_view()(request, username=user.username)
+
+        assert response.status_code == HTTPStatus.OK  # nosec
 
 
 class PartyNewPageTest(TestCase):
