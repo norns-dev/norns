@@ -65,7 +65,7 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction
       - name: Run tests
-        run: poetry run python3 manage.py test --parallel
+        run: poetry run pytest
 
   docs:
     name: "Build Docs"
