@@ -37,7 +37,7 @@ class PartyListJoinedPageTest(TestCase):
 
     def setUp(self) -> None:
         # Logs the test user in
-        self.client.login(**self.user_params)
+        self.client.force_login(self.user)
 
     def test_url_exists_at_correct_location(self):
         response = self.client.get(self.abs_url, follow=True)
