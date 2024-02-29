@@ -63,7 +63,7 @@ jobs:
           python-version: ${{ env.PY_VERSION }}
           cache: "poetry"
       - name: Install dependencies
-        run: poetry install --no-interaction
+        run: poetry install --no-interaction --with tests
       - name: Run tests
         run: poetry run pytest
 
