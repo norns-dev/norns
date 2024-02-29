@@ -1,5 +1,5 @@
 """
-Tests for pages app
+Tests for the home page
 """
 
 from django.test import SimpleTestCase

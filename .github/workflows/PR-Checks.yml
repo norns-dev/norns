@@ -10,9 +10,34 @@ env:
   POETRY_VERSION: "1.8.1"
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load cached Poetry installation
+        id: cached-poetry
+        uses: actions/cache@v4
+        with:
+          path: ~/.local
+          key: poetry-${{ env.POETRY_VERSION }}
+      - name: Install Poetry
+        if: steps.cached-poetry.outputs.cache-hit != 'true'
+        uses: snok/install-poetry@v1
+        with:
+          version: ${{ env.POETRY_VERSION }}
+          installer-parallel: true
+      - name: Set up Python ${{ env.PY_VERSION }} on ubuntu-latest
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+          cache: "poetry"
+      - name: Install dependencies
+        run: poetry install --no-interaction --with dev,tests,docs
+
   style:
     name: "pre-commit Checks"
     runs-on: ubuntu-latest
+    needs: [ setup ]
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation
@@ -43,6 +68,7 @@ jobs:
       SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       DJANGO_DEBUG: ${{ vars.DJANGO_DEBUG }}
       MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+    needs: [ setup ]
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation
@@ -63,13 +89,14 @@ jobs:
           python-version: ${{ env.PY_VERSION }}
           cache: "poetry"
       - name: Install dependencies
-        run: poetry install --no-interaction
+        run: poetry install --no-interaction --with tests
       - name: Run tests
-        run: poetry run python3 manage.py test --parallel
+        run: poetry run pytest
 
   docs:
     name: "Build Docs"
     runs-on: ubuntu-latest
+    needs: [ setup ]
     steps:
       - uses: actions/checkout@v4
       - name: Load cached Poetry installation

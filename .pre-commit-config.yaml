@@ -94,10 +94,10 @@ repos:
         entry: poetry run pylint -rn -sn
         language: system
         types: [ python ]
-        exclude: ^(.*/tests.py|.*/tests/.*|.*/migrations/.*.py|docs/.*)$
+        exclude: ^(.*/tests.py|.*/tests/.*|.*/migrations/.*.py|docs/.*|conftest.py)$
       - id: poetry-sync
         name: poetry-sync
-        entry: poetry install --sync --with dev
+        entry: poetry install --sync --with dev,tests,docs
         language: system
         always_run: true
         stages:
